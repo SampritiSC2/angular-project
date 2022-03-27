@@ -1,0 +1,33 @@
+<div class="row mt-3">
+  <div class="col-sm-12 col-md-4">
+    <app-image-card></app-image-card>
+  </div>
+  <div class="col-sm-12 col-md-8 table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Admin</th>
+          <th>Active</th>
+          <th>DOB</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of loadedUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.gender }}</td>
+          <td>{{ user.isAdmin }}</td>
+          <td>{{ user.isactive }}</td>
+          <td>{{ user.dob }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

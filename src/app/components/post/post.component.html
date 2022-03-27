@@ -1,0 +1,27 @@
+<div class="card mb-2">
+  <div class="card-body">
+    <h6 class="card-title text-secondary">{{ post.userName }}</h6>
+    <p class="card-text">
+      {{ post.post }}
+    </p>
+    <app-loading-spinner
+      id="spinner"
+      *ngIf="loadingImage"
+    ></app-loading-spinner>
+    <img
+      [src]="imageUrl"
+      alt=""
+      class="img-fluid"
+      *ngIf="!loadingImage"
+      style="width: 100%"
+    />
+  </div>
+  <div class="card-footer d-flex justify-content-between">
+    <small>{{ post.createdDate | date: "medium" }}</small>
+    <i
+      class="fa-solid fa-trash text-danger"
+      id="deleteIcon"
+      (click)="deleteHandler(post.id)"
+    ></i>
+  </div>
+</div>

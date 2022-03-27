@@ -1,0 +1,28 @@
+<div class="card">
+  <img
+    *ngIf="!loadingImageUrl"
+    [src]="profileImageUrl"
+    class="card-img-top img-fluid"
+    alt="Profile Image"
+    id="profilePic"
+  />
+  <app-loading-spinner
+    id="spinner"
+    *ngIf="loadingImageUrl"
+  ></app-loading-spinner>
+  <div class="card-body text-center">
+    <form>
+      <input type="file" class="form-control mb-2" #fileInput />
+      <button
+        class="btn btn-success btn-sm"
+        type="button"
+        (click)="changeProfilePicture()"
+      >
+        Update Profile Photo
+      </button>
+    </form>
+
+    <hr />
+    <h6 class="card-text">{{ postsCount | async }} Posts</h6>
+  </div>
+</div>

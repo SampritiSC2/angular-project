@@ -1,0 +1,143 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8 offset-md-2 text-center mt-3">
+    <div class="form-check form-check-inline me-5">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="section"
+        value="profile"
+        checked
+        (change)="onToggleSection($event)"
+      />
+      <label class="form-check-label" for="inlineRadio1"
+        >Profile Settings</label
+      >
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="section"
+        value="password"
+        (change)="onToggleSection($event)"
+      />
+      <label class="form-check-label" for="inlineRadio2">Change Password</label>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <app-loading-spinner id="spinner" *ngIf="isLoading"></app-loading-spinner>
+  <div class="col-sm-12 col-md-8 offset-md-2">
+    <div class="card" *ngIf="!isLoading">
+      <div class="card-body" *ngIf="selectedSection === 'profile'">
+        <h5 class="card-title text-center">Profile Settings</h5>
+        <form [formGroup]="profileForm" (ngSubmit)="handleUpdate()">
+          <div class="row mt-4">
+            <div class="col">
+              <label>FirstName</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="First name"
+                formControlName="firstName"
+              />
+            </div>
+            <div class="col">
+              <label>LastName</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Last name"
+                formControlName="lastName"
+              />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <label>Gender</label>
+              <select class="form-select" formControlName="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="col">
+              <label>DOB</label>
+              <input type="date" class="form-control" formControlName="dob" />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <label>Email</label>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                formControlName="email"
+              />
+            </div>
+            <div class="col">
+              <label>Mobile Number</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Mobile Number"
+                formControlName="phone"
+              />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <label>Country</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Country"
+                formControlName="country"
+              />
+            </div>
+            <div class="col">
+              <label>City</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="City"
+                formControlName="city"
+              />
+            </div>
+          </div>
+          <button class="btn btn-success mt-3" type="submit">SAVE</button>
+        </form>
+      </div>
+      <div class="card-body" *ngIf="selectedSection === 'password'">
+        <h5 class="card-title text-center">Profile Settings</h5>
+        <form
+          [formGroup]="passwordForm"
+          (ngSubmit)="handlePasswordFormSubmit()"
+        >
+          <div class="row mt-4">
+            <div class="col">
+              <label>New Password</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="New Password"
+                formControlName="password"
+              />
+            </div>
+            <div class="col">
+              <label>Confirm Password</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Confirm Password"
+                formControlName="confirmPassword"
+              />
+            </div>
+          </div>
+          <button class="btn btn-success mt-3" type="submit">SAVE</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

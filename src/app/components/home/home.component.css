@@ -1,0 +1,16 @@
+#spinner {
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#deleteIcon {
+  cursor: pointer;
+}
+
+#deleteIcon:hover {
+  transform: scale(1.2);
+}

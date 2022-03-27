@@ -1,0 +1,22 @@
+<div class="card mb-3" style="max-width: 540px">
+  <div class="row g-0">
+    <div class="col-md-4 text-center">
+      <img
+        src="https://cdn1.iconfinder.com/data/icons/circle-outlines-colored/512/User_Account_Person_Avatar_Profile_Man_Head-512.png"
+        class="img-fluid rounded-start"
+        alt="..."
+        style="width: 100px"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Friend {{ index + 1 }}</h5>
+        <p class="card-text">
+          <button class="btn btn-primary" (click)="handleCreateRequest()">
+            Send Request
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

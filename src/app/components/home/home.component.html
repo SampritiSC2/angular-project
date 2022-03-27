@@ -1,0 +1,48 @@
+<div class="row mt-3">
+  <div class="col-sm-12 col-md-4">
+    <app-image-card></app-image-card>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <h5 class="text-secondary">Add a new Post/ Upload a picture</h5>
+    <div
+      class="alert alert-success alert-dismissible fade show"
+      *ngIf="message"
+    >
+      {{ message }}
+      <button type="button" class="btn-close" (click)="closeAlert()"></button>
+    </div>
+    <form [formGroup]="uploadForm" (ngSubmit)="handlePostSubmit()">
+      <div class="form-group">
+        <textarea class="form-control" formControlName="post"></textarea>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-6">
+          <input
+            type="file"
+            class="form-control"
+            placeholder="Upload Image"
+            #fileInput
+            formControlName="file"
+          />
+        </div>
+        <div class="col-md-6">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="loading || !uploadForm.valid"
+          >
+            Upload
+          </button>
+        </div>
+      </div>
+    </form>
+    <app-loading-spinner id="spinner" *ngIf="loading"></app-loading-spinner>
+    <div class="mt-5" *ngIf="!loading">
+      <app-post
+        *ngFor="let post of loadedPosts"
+        [post]="post"
+        (onHandleDelete)="handleDelete($event)"
+      ></app-post>
+    </div>
+  </div>
+</div>
